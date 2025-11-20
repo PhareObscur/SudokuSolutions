@@ -1,0 +1,6 @@
+---
+permalink: client.js
+---
+{% set js %}
+{% include "client.js" %}
+{% endset %}{{ js | jsmin | safe }}

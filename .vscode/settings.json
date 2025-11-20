@@ -1,0 +1,8 @@
+{
+  "files.associations": {
+    "*.njk": "html"
+  },
+  "[html]": {
+    "editor.formatOnSave": false
+  }
+}

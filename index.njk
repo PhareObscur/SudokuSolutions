@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Solutions du livre 1 Sudoku</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Faustina:wght@300&family=Poppins:wght@300&display=swap" rel="stylesheet">
+    {% set css %} {% include "bundle.css" %} {% endset %}
+    <style>
+      {{ css | cssmin | safe }}
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <h1>Phare Obscur Sudoku</h1>
+
+      <div class="controls">
+        <div class="input-row">
+          <div class="control-group">
+            <label for="level">Difficulté :</label>
+            <select id="level">
+              <option value="E">Facile</option>
+              <option value="M">Moyen</option>
+              <option value="H">Difficile</option>
+              <option value="L">Légendaire</option>
+            </select>
+          </div>
+
+          <div class="control-group">
+            <label for="num">Numéro :</label>
+            <input id="num" type="number" placeholder="001" pattern="\d{3}" required />
+          </div>
+        </div>
+
+        <button id="go">Afficher</button>
+
+        <a href="pdf/1 Les Solutions.pdf" download>Télécharger les solutions (PDF)</a>
+      </div>
+
+      <p id="msg"></p>
+
+      <div id="sudoku" class="hidden"></div>
+
+      <p id="copyright">© 2025 Phare Obscur Éditions</p>
+    </main>
+
+    <script defer src="client.js"></script>
+  </body>
+</html>
