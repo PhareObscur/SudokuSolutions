@@ -17,36 +17,36 @@
 
   <body>
     <main class="container">
-      <h1>Phare Obscur Sudoku</h1>
+      <h1 data-i18n="h1">Phare Obscur Sudoku</h1>
 
       <div class="controls">
         <div class="input-row">
           <div class="control-group">
-            <label for="level">Difficulté :</label>
+            <label for="level" data-i18n="label_level">Difficulté :</label>
             <select id="level">
-              <option value="E">Facile (E)</option>
-              <option value="M">Moyen (M)</option>
-              <option value="H">Difficile (H)</option>
-              <option value="L">Légendaire (L)</option>
+              <option value="E" data-i18n="opt_e">Facile (E)</option>
+              <option value="M" data-i18n="opt_m">Moyen (M)</option>
+              <option value="H" data-i18n="opt_h">Difficile (H)</option>
+              <option value="L" data-i18n="opt_l">Légendaire (L)</option>
             </select>
           </div>
 
           <div class="control-group">
-            <label for="num">Numéro :</label>
+            <label for="num" data-i18n="label_num">Numéro :</label>
             <input id="num" type="number" placeholder="001" pattern="\d{3}" required />
           </div>
         </div>
 
-        <button id="go">Afficher</button>
+        <button id="go" data-i18n="btn_show">Afficher</button>
 
-        <a href="pdf/1 Les Solutions.pdf" download>Télécharger les solutions (PDF)</a>
+        <a href="pdf/solutions.pdf" download data-i18n="link_download">Télécharger les solutions (PDF)</a>
       </div>
 
       <p id="msg"></p>
 
       <div id="sudoku" class="hidden"></div>
 
-      <p id="copyright">© 2025 Phare Obscur Éditions</p>
+      <p id="copyright" data-i18n="copyright">© 2025 Phare Obscur Éditions</p>
     </main>
 
     <script defer src="client.js"></script>

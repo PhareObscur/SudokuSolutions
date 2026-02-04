@@ -1,4 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // Internationalization (i18n)
+    const TRANSLATIONS = {
+        fr: {
+            title: "Solutions du livre 1 Sudoku",
+            h1: "Phare Obscur Sudoku",
+            label_level: "Difficulté :",
+            opt_e: "Facile (E)",
+            opt_m: "Moyen (M)",
+            opt_h: "Difficile (H)",
+            opt_l: "Légendaire (L)",
+            label_num: "Numéro :",
+            btn_show: "Afficher",
+            link_download: "Télécharger les solutions (PDF)",
+            copyright: "© 2025 Phare Obscur Éditions",
+            // Dynamic messages
+            err_loading: "Erreur lors du chargement des données.",
+            err_not_loaded: "Les données ne sont pas encore chargées.",
+            err_enter_num: "Veuillez entrer un numéro.",
+            err_not_found: "Solution non trouvée pour",
+            msg_solution_found: "Solution trouvée !"
+        },
+        en: {
+            title: "Sudoku Book 1 Solutions",
+            h1: "Phare Obscur Sudoku",
+            label_level: "Difficulty:",
+            opt_e: "Easy (E)",
+            opt_m: "Medium (M)",
+            opt_h: "Hard (H)",
+            opt_l: "Legendary (L)",
+            label_num: "Number:",
+            btn_show: "Show",
+            link_download: "Download solutions (PDF)",
+            copyright: "© 2025 Phare Obscur Editions",
+            // Dynamic messages
+            err_loading: "Error loading data.",
+            err_not_loaded: "Data not loaded yet.",
+            err_enter_num: "Please enter a number.",
+            err_not_found: "Solution not found for",
+            msg_solution_found: "Solution found!"
+        }
+    };
+
+    // Detect language: Default to French only if language starts with 'fr', else English
+    const userLang = navigator.language || navigator.userLanguage;
+    const currentLang = userLang.startsWith('fr') ? 'fr' : 'en';
+    const t = TRANSLATIONS[currentLang];
+
+    // Apply translations to static elements
+    document.title = t.title;
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[key]) {
+            el.textContent = t[key];
+        }
+    });
+
     const goBtn = document.getElementById('go');
     const levelSelect = document.getElementById('level');
     const numInput = document.getElementById('num');
@@ -21,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         })
         .catch(error => {
             console.error('Error loading solutions:', error);
-            msg.textContent = 'Erreur lors du chargement des données.';
+            msg.textContent = t.err_loading;
         });
 
     // Add Enter key support
@@ -35,7 +91,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     goBtn.addEventListener('click', () => {
         if (!solutions) {
-            msg.textContent = 'Les données ne sont pas encore chargées.';
+            msg.textContent = t.err_not_loaded;
             return;
         }
 
@@ -43,7 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const num = numInput.value.trim();
 
         if (!num) {
-            msg.textContent = 'Veuillez entrer un numéro.';
+            msg.textContent = t.err_enter_num;
             return;
         }
 
@@ -55,7 +111,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const solution = solutions[key];
 
         if (!solution) {
-            msg.textContent = `Solution non trouvée pour ${key}`;
+            msg.textContent = `${t.err_not_found} ${key}`;
             sudokuDiv.classList.add('hidden');
             return;
         }
