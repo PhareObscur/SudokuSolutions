@@ -92,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     goBtn.addEventListener('click', () => {
         if (!solutions) {
             msg.textContent = t.err_not_loaded;
+            sudokuDiv.classList.add('hidden');
             return;
         }
 
@@ -100,6 +101,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         if (!num) {
             msg.textContent = t.err_enter_num;
+            sudokuDiv.classList.add('hidden');
             return;
         }
 
